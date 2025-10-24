@@ -1,3 +1,8 @@
+# 由于某公司想白嫖劳动力不给钱！！！将项目作为开源代码分享
+# Because a certain company wanted to exploit labor for free without paying！！！ So shared the project as open-source code.
+
+
+
 项目说明（中文）
 
 这个项目用于分析“康师傅双周报数据20250718.csv”中的情感（正面/负面/中性）并输出以下产物：
@@ -82,12 +87,68 @@ python generate_negative_wordclouds.py
      matplotlib.rcParams['axes.unicode_minus'] = False
      ```
 
-可选的改进/下一步建议
-- 扩充 `stopwords.txt`（我可以替您附上一个更完整的中文停用词列表）。
-- 把每个 Brand 的 top N 关键词自动按主题（口感/价格/物流/包装/服务）归类并生成汇总表。
-- 生成 PPT 报告或单页 PDF 汇总（包含若干 Brand 的图和结论）。
+# Master Kong Beverage Sentiment Analysis Project  
 
-如果您希望我：
-- 帮您扩展 `stopwords.txt` 并重新生成词云；
-- 或把 top 10 负面关键词归类并加入 `product_reports.xlsx` 的 sheet 中；
-告知我您选择的项，我会继续执行并把结果放在工作区。
+## 🧾 Project Overview  
+This project analyzes sentiments (positive, negative, neutral) from **`康师傅双周报数据20250718.csv`** and produces structured reports, visualizations, and word clouds for each beverage brand.  
+
+---
+
+## 📂 Main Scripts  
+
+### `calculate_satisfaction.py`  
+- Calculates sample count and satisfaction rate for each **Brand + FirstName**.  
+- Satisfaction rate formula:  
+  \[
+  \text{Satisfaction} = \frac{(\text{Positive} - \text{Negative})}{(\text{Positive} + \text{Negative})} \times 100\%
+  \]  
+- **Output:**  
+  - `satisfaction_results.xlsx` — satisfaction summary per brand  
+
+---
+
+### `generate_product_reports.py`  
+- Creates detailed reports for each **Brand** (one Excel sheet per brand).  
+- Draws sentiment distribution charts.  
+- **Outputs:**  
+  - `product_reports.xlsx` — multi-sheet Excel report  
+  - `plots/*.png` — stacked bar charts of sentiment distribution  
+
+---
+
+### `generate_negative_wordclouds.py`  
+*(Extended to include both positive and negative word clouds)*  
+- Generates word clouds for each brand after removing stopwords.  
+- Saves outputs to:  
+  - `plots/wordclouds/negative/`  
+  - `plots/wordclouds/positive/`  
+- Exports keyword frequency tables:  
+  - `negative_words.xlsx`  
+  - `positive_words.xlsx`  
+  (Each row: `Brand`, `word`, `count`)  
+- Uses `stopwords.txt` (auto-created if missing; editable).  
+
+---
+
+## ⚙️ Dependencies  
+
+- pandas  
+- numpy  
+- matplotlib  
+- openpyxl  
+- jieba  
+- wordcloud  
+
+### Installation  
+
+You can install dependencies using the included **`requirements.txt`** file.  
+
+#### PowerShell Example  
+(Use `python` if it’s already in your PATH)  
+
+```powershell
+# Using system Python
+python -m pip install -r requirements.txt
+
+# Or using full Python path
+C:/Users/86136/AppData/Local/Programs/Python/Python312/python.exe -m pip install -r requirements.txt
